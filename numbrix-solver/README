@@ -1,0 +1,65 @@
+John David Eriksen
+http://www.jkndrkn.com
+john.eriksen@yahoo.com
+
+OVERVIEW
+
+This is a solver for the Numbrix Puzzle (www.parade.com/numbrix/). It is not optimal and somewhat unstable when used with very large puzzles.
+
+NOTE
+
+The project has been tested and verified on the following Lisps/platforms: 
+
+1) SBCL on Linux (preferred)
+2) CLISP on Linux
+
+Due to SBCL's superior garbage collection efficiency, this project runs very quickly on SBCL. Tests have shown that this particular project will function correctly but at greatly diminished efficiency in CLISP -- in some cases, execution times on SBCL will execute ten to twenty times more quickly. 
+
+FILES
+
+This archive should contain the following files and directories:
+
+README          # This README file
+numbrix.lisp    # Compiles and loads system files.
+vars.lisp       # Common system variables and parameters.
+lib.lisp        # Common functionality.
+game.lisp       # Functionality used by the game session. 
+solver.lisp     # Functionality used by solver session.
+boards.lisp     # A list of all game boards available during a game or solver session.
+boards/         # Contains all game boards referenced by boards.lisp
+test.lisp       # Test suite.
+
+SETUP
+
+1) Using your IDE or Lisp interpreter, navigate to the directory containing numbrix.lisp
+2) Compile and load the project using the command (load (compile-file "numbrix.lisp"))
+3) Run the Numbrix game by calling the function NUMBRIX using (numbrix)
+4) Run the Numbrix puzzle solver by calling the function SOLVER using (solver)
+
+SOLVER DETAILS
+
+Upon starting the Numbrix puzzle solver, the user is prompted to select a game board. The board is printed and then solved, with wall clock and cpu time estimates given following completion of the board. The user is then asked if they would 1) like to view the raw list of moves that the solver executed, and 2) view these moves applied, one at a time, to the unsolved board so as to clearly see how the solver selected the order in which to make decisions. Please note that execution times for certain large boards may exceed several seconds -- especially in CLISP. Also note that the solver is undefined for unsolvable boards. These boards include boards of size 0 or 1, totally empty boards, and boards that are impossible to solve. Such boards may trigger an error or possibly an infinite execution loop.
+
+TOURNAMENT BOARDS
+
+The tournament boards are accesible by calling the function SOLVER as described above and following the instructions for SOLVER DETAILS. The filenames for the tournament boards are of the form "tournament-XX.lisp" where XX corresponds to the zero-padded integers from 01 to 15. Please note: tournament boards 11, 14, and 15 are UNSOLVABLE using this implementation of the Numbrix solver.
+
+CONFIGURATION
+
+To add or change game boards, open the file boards.lisp and view the example files stored in the boards/ directory. The configuration file boards.lisp is a simple list of all files in the boards/ directory. To remove a board, remove its entry in boards.lisp. To add a board, add its filename to boards.lisp. To create a board, simply create a file containing a single NxN list of lists in the boards/ directory. Empty spaces are represented by the integer 0, and filled spaces are represented by integer values.
+
+Example:
+
+To create this game board:
+
+1  2  3  4
+5  -  -  - 
+9  -  -  - 
+13 14 15 16
+
+Create a file containing the following list:
+
+((1  2  3  4)
+ (5  0  0  0)
+ (9  0  0  0)
+ (13 14 15 16))

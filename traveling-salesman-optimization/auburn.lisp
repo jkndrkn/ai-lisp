@@ -1,0 +1,6 @@
+((Auburn ((Columbus 149)(Birmingham 188)(Montgomery 202)(Huntsville 246)(Mobile 370)))
+ (Columbus ((Auburn 149)(Birmingham 173)(Montgomery 82)(Huntsville 272)(Mobile 251)))
+ (Birmingham ((Auburn 188)(Columbus 173)(Montgomery 92)(Huntsville 100)(Mobile 258)))
+ (Montgomery ((Auburn 202)(Columbus 82)(Birmingham 100)(Huntsville 190)(Mobile 170)))
+ (Huntsville ((Auburn 246)(Columbus 272)(Birmingham 100)(Montgomery 190)(Mobile 357)))
+ (Mobile ((Auburn 370)(Columbus 251)(Birmingham 258)(Montgomery 170)(Huntsville 357))))
